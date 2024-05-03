@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body { height: 100%; }
+body { 
+    background-color: #1c75bb;
+    margin: 0; 
+    font-family: Roboto, 
+    "Helvetica Neue", sans-serif; 
+}
+.container {
+    height: 100vh;
+    overflow-x: hidden;
+    padding: 20px;
+}
+img {
+    object-fit: contain; 
+    width: 100%;
+}
+.text-danger {
+    color: red !important;
+}
+mat-form-field {
+    width: 100%;
+}
+.success-snackbar {
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    --mat-mdc-snack-bar-button-color: #ffffff;
+    --mdc-snackbar-container-color: #2ed47e;
+}
+.error-snackbar {
+    --mdc-snackbar-container-color: #e74c3c;
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    --mat-mdc-snack-bar-button-color: #ffffff;
+}

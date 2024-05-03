@@ -1,0 +1,74 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="container">
+    <mat-card class="card">
+        <mat-card-header>
+            <img src="assets/images/logo.jpeg">
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="groupForm">
+                <div>
+                    <label class="main-label d-block lh-1">
+                        GROUP ID
+                    </label>
+                    <mat-form-field>
+                        <mat-label>
+                            Enter your group id
+                        </mat-label>
+                        <input matInput type="text" id="groupId" formControlName="groupId" [readonly]="isLoading">
+                    </mat-form-field>
+                    <div class="text-danger" *ngIf="groupForm.get('groupId')!.hasError('required') && groupForm.get('groupId')!.touched">
+                        Group id is required.
+                    </div>
+                    <div class="text-danger" *ngIf="groupForm.get('groupId')!.hasError('minlength') && groupForm.get('groupId')!.touched">
+                        Group id must be at least 8 characters long.
+                    </div>
+                </div>
+            </form>
+            <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button class="btn" type="submit" [disabled]="groupForm.invalid || isLoading" (click)="onJoinGroup()">
+                Join the Tropa!
+            </button>
+        </mat-card-actions>
+        <a href="#" (click)="onCreateGroup()">
+            No group yet? Create here!
+        </a>
+    </mat-card>
+</div>
+<div 
+    class="poppers-popup"
+    [class.active]="nicknameApplied">
+    <div class="popup-dialog medium">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>
+                    Please enter your nickname
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="nicknameForm">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>
+                                Nickname
+                            </mat-label>
+                            <input appPascalCase matInput type="text" id="nickname" formControlName="nickname" [readonly]="isLoading">
+                        </mat-form-field>
+                        <div class="text-danger" *ngIf="nicknameForm.get('nickname')!.hasError('nickname') && nicknameForm.get('nickname')!.touched">
+                            Nickname id is required.
+                        </div>
+                    </div>
+                </form>
+                <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button class="btn" type="submit" [disabled]="nicknameForm.invalid || isLoading" (click)="onSubmitNickname()">
+                    Submit
+                </button>
+                <button mat-button class="btn-cancel" (click)="toggleSetNicknameClass()">
+                    Cancel
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
