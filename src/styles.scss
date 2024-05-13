@@ -12,6 +12,13 @@ body {
     overflow-x: hidden;
     padding: 20px;
 }
+.list-unstyled {
+    list-style-type: none !important;
+    padding-inline-start: 0px !important;
+}
+.position-relative {
+    position: relative !important;
+}
 img {
     object-fit: contain; 
     width: 100%;

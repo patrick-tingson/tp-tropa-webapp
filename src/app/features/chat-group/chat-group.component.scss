@@ -1,0 +1,139 @@
+.card {
+    max-width: 700px;
+    padding: {
+      left: 15px;
+      right: 15px;
+    }
+    width: fit-content;
+}
+.message-left {
+  text-align: left;
+  box-sizing: content-box;
+  p {
+      padding: 10px 15px;
+      display: inline-block;
+      background-color: #f4f6fc;
+      border-radius: 0 10px 10px 10px;
+  }
+  div {
+      margin-bottom: 5px;
+
+      &:last-child {
+          margin-bottom: 0;
+      }
+  }
+}
+.message-right {
+  text-align: right;
+  p {
+      padding: 10px 15px;
+      display: inline-block;
+      background-color: blueviolet;
+      border-radius: 10px 0px 10px 10px;
+  }
+  div {
+      margin-bottom: 5px;
+      
+      &:last-child {
+          margin-bottom: 0;
+      }
+  }
+}
+.center {
+  margin: 0 auto;
+}
+.bg-white {
+  background: white;
+}
+.member-container {
+  text-align: center;
+  margin: {
+    top: 10px;
+    bottom: 10px;
+  };
+}
+.member {
+  margin: 2px;
+  width: auto;
+}
+img {
+  width: 30%;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+.scrollable-container {
+  padding: 10px;
+  margin-top: 10px;
+  position: relative;
+  overflow-y: auto; 
+  height:400px;
+  background-color: black;
+}
+.right {
+  flex: 1 1 auto;
+}
+.message-content {
+  position: absolute;
+  width: 96%;
+  padding: {
+    left: 10px;
+    bottom: 10px;
+  }
+  bottom: 0; 
+  color: #ffd740;
+}
+::ng-deep {
+  .poppers-popup {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      z-index: 999;
+      position: fixed;
+      transition: .3s;
+      visibility: hidden;
+      background-color: rgba(0, 0, 0, 0.5);
+      overflow: {
+          x: hidden;
+          y: auto;
+      };
+      .large {
+          max-width: 767px
+      }
+      .medium {
+          max-width: 550px
+      }
+      .small {
+          max-width: 400px
+      }
+      .popup-dialog {
+          display: flex;
+          transition: .3s;
+          align-items: center;
+          transform: translate(0, -20px);
+          min-height: calc(100% - 1.75rem * 2);
+          margin: {
+              left: auto;
+              right: auto;
+          };
+      }
+      &.active {
+          opacity: 1;
+          visibility: visible;
+
+          .popup-dialog {
+              transform: none;
+          }
+      }
+    }
+  }
+
+@media only screen and (min-width : 375px) and (max-width : 500px) {
+  img {
+    width: 50%;
+  }
+  .message-content {
+    padding: 5px;
+  }
+}

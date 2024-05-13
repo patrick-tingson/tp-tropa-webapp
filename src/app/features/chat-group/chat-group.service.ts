@@ -15,7 +15,7 @@ export class ChatGroupService {
     params = params.set("gi", gi);
     params = params.set("nn", nn);
     ChatGroupService.hubConnection = new HubConnectionBuilder()
-      .withUrl(`${environment.serviceUrl}${environment.chatHubEndpoint}${params}`)
+      .withUrl(`${environment.serviceUrl}${environment.chatHubEndpoint}?${params.toString()}`)
       .withAutomaticReconnect()
       .build()
       ChatGroupService.hubConnection.start().then(() => {

@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NotificationService } from '../../shared/services/notification.service';
@@ -32,7 +32,8 @@ export class JoinGroupComponent {
       private fb: FormBuilder,
       private router: Router,
       private notif: NotificationService,
-      private service: JoinGroupService
+      private service: JoinGroupService,
+      private route: ActivatedRoute
   ) {
       this.groupForm = this.fb.group({
           groupId: ['', [Validators.required, Validators.minLength(36)]]
@@ -40,6 +41,14 @@ export class JoinGroupComponent {
       this.nicknameForm = this.fb.group({
           nickname: ['', [Validators.required]]
       });
+  }
+  ngOnInit() {
+    var groupLink: any = this.route.snapshot.queryParams;
+    if(groupLink.g) 
+    {
+      this.groupForm.controls["groupId"].setValue(groupLink.g);
+      this.onJoinGroup();
+    }
   }
 
   onSubmitNickname() {
